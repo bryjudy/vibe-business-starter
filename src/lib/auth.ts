@@ -8,7 +8,7 @@ const trustedOrigins = [
   process.env.NEXT_PUBLIC_APP_URL,
   // VERCEL_URL is auto-set by Vercel to the current deployment domain
   process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
-].filter(Boolean) as string[]
+].filter((x): x is string => !!x)
 
 export const auth = betterAuth({
   database: drizzleAdapter(db, {
